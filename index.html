@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مملكة كلوفر ☘️</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&family=Cinzel+Decorative:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #00ff88;
+    --dark-green: #00c96a;
+    --gold: #ffd700;
+    --dark: #050d0a;
+    --card-bg: rgba(0,255,136,0.04);
+    --border: rgba(0,255,136,0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: #e8f5ee;
+    font-family: 'Noto Naskh Arabic', serif;
+    overflow-x: hidden;
+  }
+
+  /* Animated background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 20%, rgba(0,200,80,0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(0,100,50,0.12) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(0,30,15,0.5) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Floating particles */
+  .particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--green);
+    border-radius: 50%;
+    opacity: 0;
+    animation: float-up linear infinite;
+    filter: blur(1px);
+  }
+
+  @keyframes float-up {
+    0% { opacity: 0; transform: translateY(100vh) scale(0); }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.2; }
+    100% { opacity: 0; transform: translateY(-10vh) scale(1.5) rotate(180deg); }
+  }
+
+  /* Navbar */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 16px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(5,13,10,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.4rem;
+    color: var(--green);
+    text-shadow: 0 0 20px rgba(0,255,136,0.5);
+    letter-spacing: 2px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: #aac8b8;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    right: 0;
+    width: 0;
+    height: 1px;
+    background: var(--green);
+    transition: width 0.3s;
+  }
+
+  .nav-links a:hover {
+    color: var(--green);
+  }
+
+  .nav-links a:hover::after {
+    width: 100%;
+  }
+
+  /* Hero */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 100px 20px 60px;
+    z-index: 2;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 18px;
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    color: var(--dark-green);
+    margin-bottom: 28px;
+    background: rgba(0,255,136,0.05);
+    animation: pulse-border 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-border {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(0,255,136,0.2); }
+    50% { box-shadow: 0 0 0 8px rgba(0,255,136,0); }
+  }
+
+  .hero-badge .dot {
+    width: 6px;
+    height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+    animation: blink 1.5s ease-in-out infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
+  }
+
+  .hero-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 1.1;
+    background: linear-gradient(135deg, #fff 0%, var(--green) 50%, var(--gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 16px;
+    animation: fade-in-up 1s ease both;
+  }
+
+  .hero-subtitle {
+    font-size: 1.15rem;
+    color: #7db89a;
+    margin-bottom: 12px;
+    animation: fade-in-up 1s ease 0.2s both;
+    letter-spacing: 1px;
+  }
+
+  .hero-jp {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.9rem;
+    color: rgba(0,255,136,0.3);
+    letter-spacing: 6px;
+    margin-bottom: 48px;
+    animation: fade-in-up 1s ease 0.3s both;
+  }
+
+  .hero-desc {
+    max-width: 560px;
+    line-height: 1.9;
+    color: #9ab8a8;
+    font-size: 1rem;
+    margin-bottom: 48px;
+    animation: fade-in-up 1s ease 0.4s both;
+  }
+
+  .hero-slogan {
+    display: inline-block;
+    color: var(--green);
+    font-style: italic;
+    font-size: 1.05rem;
+    margin-bottom: 48px;
+    animation: fade-in-up 1s ease 0.5s both;
+  }
+
+  .hero-date {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 48px;
+    animation: fade-in-up 1s ease 0.6s both;
+  }
+
+  .stat-box {
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 2rem;
+    color: var(--green);
+    display: block;
+    text-shadow: 0 0 20px rgba(0,255,136,0.4);
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    color: #5a8a70;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    animation: fade-in-up 1s ease 0.7s both;
+  }
+
+  .btn-primary {
+    padding: 14px 36px;
+    background: var(--green);
+    color: var(--dark);
+    border: none;
+    border-radius: 4px;
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.2);
+    transform: translateX(100%);
+    transition: transform 0.3s;
+  }
+
+  .btn-primary:hover::before { transform: translateX(0); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,255,136,0.4); }
+
+  .btn-outline {
+    padding: 14px 36px;
+    background: transparent;
+    color: var(--green);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--green);
+    background: rgba(0,255,136,0.05);
+    transform: translateY(-2px);
+  }
+
+  @keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Divider */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 0;
+  }
+
+  /* Sections */
+  section {
+    position: relative;
+    z-index: 2;
+    padding: 100px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .section-label span {
+    font-size: 0.75rem;
+    color: var(--green);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+  }
+
+  .section-label::before, .section-label::after {
+    content: '';
+    height: 1px;
+    flex: 1;
+    background: var(--border);
+  }
+
+  .section-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    text-align: center;
+    margin-bottom: 60px;
+    color: #fff;
+    position: relative;
+  }
+
+  .section-title .highlight {
+    color: var(--green);
+    text-shadow: 0 0 30px rgba(0,255,136,0.3);
+  }
+
+  /* Leaders grid */
+  .leaders-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .leader-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 16px;
+    text-align: center;
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .leader-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0,255,136,0.05) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+
+  .leader-card:hover {
+    border-color: rgba(0,255,136,0.4);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 30px rgba(0,255,136,0.1);
+  }
+
+  .leader-card:hover::before { opacity: 1; }
+
+  .leader-card.emperor {
+    grid-column: span 2;
+    background: linear-gradient(135deg, rgba(255,215,0,0.06) 0%, rgba(0,255,136,0.04) 100%);
+    border-color: rgba(255,215,0,0.25);
+  }
+
+  .leader-card.emperor:hover {
+    border-color: rgba(255,215,0,0.5);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 40px rgba(255,215,0,0.15);
+  }
+
+  .rank-badge {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    background: rgba(0,255,136,0.1);
+    border: 1px solid var(--border);
+    color: var(--dark-green);
+  }
+
+  .emperor .rank-badge {
+    background: rgba(255,215,0,0.1);
+    border-color: rgba(255,215,0,0.3);
+    color: var(--gold);
+  }
+
+  .leader-avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--border);
+    margin: 0 auto 16px;
+    display: block;
+    transition: all 0.4s;
+    filter: grayscale(20%);
+  }
+
+  .emperor .leader-avatar {
+    width: 110px;
+    height: 110px;
+    border-color: rgba(255,215,0,0.4);
+  }
+
+  .leader-card:hover .leader-avatar {
+    border-color: var(--green);
+    filter: grayscale(0%) brightness(1.1);
+    box-shadow: 0 0 20px rgba(0,255,136,0.3);
+  }
+
+  .emperor:hover .leader-avatar {
+    border-color: var(--gold);
+    box-shadow: 0 0 25px rgba(255,215,0,0.4);
+  }
+
+  .leader-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #e8f5ee;
+    margin-bottom: 4px;
+  }
+
+  .leader-power {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.6rem;
+    color: var(--green);
+    text-shadow: 0 0 15px rgba(0,255,136,0.4);
+  }
+
+  .emperor .leader-power {
+    color: var(--gold);
+    text-shadow: 0 0 20px rgba(255,215,0,0.5);
+  }
+
+  .power-label {
+    font-size: 0.7rem;
+    color: #5a8a70;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* Guilds */
+  .guilds-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .guild-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.4s;
+    position: relative;
+  }
+
+  .guild-card:hover {
+    border-color: rgba(0,255,136,0.35);
+    transform: translateY(-6px);
+    box-shadow: 0 24px 50px rgba(0,0,0,0.6), 0 0 30px rgba(0,255,136,0.08);
+  }
+
+  .guild-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    filter: brightness(0.7) saturate(0.8);
+    transition: all 0.4s;
+  }
+
+  .guild-card:hover .guild-img {
+    filter: brightness(0.9) saturate(1.1);
+  }
+
+  .guild-body {
+    padding: 24px;
+  }
+
+  .guild-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #e8f5ee;
+    margin-bottom: 8px;
+  }
+
+  .guild-info {
+    font-size: 0.88rem;
+    color: #7db89a;
+    margin-bottom: 16px;
+    line-height: 1.7;
+  }
+
+  .guild-members {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .guild-member-imgs {
+    display: flex;
+  }
+
+  .guild-member-imgs img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--dark);
+    margin-right: -8px;
+    transition: transform 0.2s;
+  }
+
+  .guild-member-imgs img:hover {
+    transform: translateY(-4px) scale(1.15);
+    z-index: 10;
+  }
+
+  .member-count {
+    margin-right: 16px;
+    font-size: 0.88rem;
+    color: var(--green);
+    font-weight: 600;
+  }
+
+  /* News */
+  .news-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+  }
+
+  @media (max-width: 768px) {
+    .news-grid { grid-template-columns: 1fr; }
+    .leader-card.emperor { grid-column: span 1; }
+  }
+
+  .news-main {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.4s;
+  }
+
+  .news-main:hover {
+    border-color: rgba(0,255,136,0.3);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  }
+
+  .news-main-img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    filter: brightness(0.7);
+    transition: filter 0.4s;
+  }
+
+  .news-main:hover .news-main-img { filter: brightness(0.9); }
+
+  .news-main-body {
+    padding: 28px;
+  }
+
+  .news-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    background: rgba(0,255,136,0.1);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 0.72rem;
+    color: var(--green);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .news-urgent {
+    background: rgba(255,80,80,0.1);
+    border-color: rgba(255,80,80,0.3);
+    color: #ff8080;
+  }
+
+  .news-main-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #e8f5ee;
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+
+  .news-main-text {
+    font-size: 0.9rem;
+    color: #7db89a;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .news-meta {
+    display: flex;
+    gap: 20px;
+    font-size: 0.8rem;
+    color: #4a7060;
+  }
+
+  .news-side {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .news-side-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    transition: all 0.3s;
+    text-decoration: none;
+  }
+
+  .news-side-card:hover {
+    border-color: rgba(0,255,136,0.3);
+    transform: translateX(-4px);
+  }
+
+  .news-side-img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    filter: brightness(0.7);
+    flex-shrink: 0;
+  }
+
+  .news-side-body {
+    padding: 12px 16px;
+  }
+
+  .news-side-title {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: #c8e8d8;
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+
+  .news-side-date {
+    font-size: 0.75rem;
+    color: #4a7060;
+  }
+
+  /* Features */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+  }
+
+  .feature-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px 20px;
+    text-align: center;
+    transition: all 0.4s;
+  }
+
+  .feature-card:hover {
+    border-color: rgba(0,255,136,0.3);
+    transform: translateY(-4px);
+    background: rgba(0,255,136,0.06);
+  }
+
+  .feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .feature-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #e8f5ee;
+    margin-bottom: 8px;
+  }
+
+  .feature-desc {
+    font-size: 0.85rem;
+    color: #6a9a80;
+    line-height: 1.7;
+  }
+
+  /* Footer */
+  footer {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 50px 40px;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-logo {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.5rem;
+    color: var(--green);
+    margin-bottom: 8px;
+    text-shadow: 0 0 20px rgba(0,255,136,0.3);
+  }
+
+  .footer-jp {
+    font-size: 0.75rem;
+    color: rgba(0,255,136,0.25);
+    letter-spacing: 6px;
+    margin-bottom: 24px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  .footer-links a {
+    color: #4a7060;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover { color: var(--green); }
+
+  .footer-copy {
+    font-size: 0.8rem;
+    color: #2a4a38;
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Shimmer on hover for emperor */
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+
+  .emperor .leader-name {
+    background: linear-gradient(90deg, #fff 0%, var(--gold) 50%, #fff 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    nav { padding: 12px 20px; }
+    .nav-links { gap: 16px; }
+    section { padding: 60px 20px; }
+    .hero-cta { flex-direction: column; align-items: center; }
+    .hero-date { gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Particles -->
+<div class="particles" id="particles"></div>
+
+<!-- Navbar -->
+<nav>
+  <div class="nav-logo">Clover ☘️</div>
+  <ul class="nav-links">
+    <li><a href="#leaders">القادة</a></li>
+    <li><a href="#guilds">النقابات</a></li>
+    <li><a href="#news">الأخبار</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="intro">
+  <div class="hero-badge">
+    <span class="dot"></span>
+    المملكة نشطة الآن
+  </div>
+  <h1 class="hero-title">Clover</h1>
+  <p class="hero-subtitle">مملكة كلوفر ☘️</p>
+  <p class="hero-jp">木ノ葉隠れの里</p>
+  <p class="hero-desc">
+مملكة تأسست على يد الإمبراطور استا في 1 مارس 2026. من أعرق الممالك وأكثرها نظاماً ومنافسةً.
+  </p>
+  <p class="hero-slogan">"لا ندّعي الأفضل... لكننا نسعى إليه"</p>
+  <div class="hero-date">
+    <div class="stat-box">
+      <span class="stat-num">1</span>
+      <span class="stat-label">نقابة</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">2026</span>
+      <span class="stat-label">تأسست</span>
+    </div>
+  </div>
+  <div class="hero-cta">
+    <a href="#leaders" class="btn-primary">استكشف المملكة</a>
+    <a href="#news" class="btn-outline">آخر الأخبار</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Leaders -->
+<section id="leaders">
+  <div class="section-label"><span>طاقم القيادة</span></div>
+  <h2 class="section-title">قـادة <span class="highlight">كلوفر</span> 🏯</h2>
+
+  <div class="leaders-grid reveal">
+
+    <div class="leader-card emperor">
+      <span class="rank-badge">الإمبراطور</span>
+      <img src="https://f.top4top.io/p_3712cuemj0.jpg" alt="استا" class="leader-avatar">
+      <div class="leader-name">استا</div>
+      <div class="leader-power">99</div>
+      <div class="power-label">قوة</div>
+    </div>
+
+    <div class="leader-card">
+      <span class="rank-badge">نائب الإمبراطور</span>
+      <img src="https://b.top4top.io/p_3712ehrvb0.jpg" alt="يوريتشي" class="leader-avatar">
+      <div class="leader-name">يوروتشي</div>
+      <div class="leader-power">95</div>
+      <div class="power-label">قوة</div>
+    </div>
+
+    <div class="leader-card">
+      <span class="rank-badge">نائب الإمبراطور</span>
+      <img src="https://k.top4top.io/p_3712tnv8q0.jpg" alt="ميهوك" class="leader-avatar">
+      <div class="leader-name">ميهوك</div>
+      <div class="leader-power">90</div>
+      <div class="power-label">قوة</div>
+    </div>
+
+    <div class="leader-card">
+      <span class="rank-badge">اللورد</span>
+      <img src="https://e.top4top.io/p_3712m3lf30.jpg" alt="فانيتاس" class="leader-avatar">
+      <div class="leader-name">فانيتاس</div>
+      <div class="leader-power">69</div>
+      <div class="power-label">قوة</div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Guilds -->
+<section id="guilds">
+  <div class="section-label"><span>أبرز النقابات</span></div>
+  <h2 class="section-title">نقابات <span class="highlight">الأسبوع</span> 🏛️</h2>
+
+  <div class="guilds-grid reveal">
+    <div class="guild-card">
+      <img src="https://e.top4top.io/p_3712m3lf30.jpg" alt="moon" class="guild-img">
+      <div class="guild-body">
+        <div class="guild-name">نقابة 🌑 Moon</div>
+        <div class="guild-info"> <strong> أدميرال : </strong> شاغر - <strong> دوق : </strong> شاغر
+        </div>
+        <div class="guild-members">
+          <div class="guild-member-imgs">
+            <img src="https://f.top4top.io/p_3712cuemj0.jpg" alt="">
+            <img src="https://b.top4top.io/p_3712ehrvb0.jpg" alt="">
+            <img src="https://e.top4top.io/p_3712m3lf30.jpg" alt="">
+          </div>
+          <span class="member-count">5 عضو</span>
+        </div>
+      </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- News -->
+<section id="news">
+  <div class="section-label"><span>آخر المستجدات</span></div>
+  <h2 class="section-title">أخـبـار <span class="highlight">كلوفر</span> 📰</h2>
+
+  <div class="news-grid reveal">
+    <div class="news-main">
+      <img src="https://e.top4top.io/p_3712m3lf30.jpg" alt="خبر" class="news-main-img">
+      <div class="news-main-body">
+        <span class="news-tag news-urgent">🔴 عاجل</span>
+        <h3 class="news-main-title">ترقيات الرتب العليا — تاريخ جديد كلوفر</h3>
+        <p class="news-main-text">
+          سجّل التاريخ أخيراً ترقيات أسطورية بعد تفكك كلوفر من الرتب العليا. حدث استثنائي لن يُنسى في سجلات المملكة.
+        </p>
+        <div class="news-meta">
+          <span>📅 01 مارس 2026</span>
+          <span>👁 2.9K مشاهدة</span>
+          <span>❤️ 586</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="news-side">
+      <a class="news-side-card" href="https://chat.whatsapp.com/ITNWeFAko971tDxtrpmYRF?mode=hqctcla" target="_blank">
+        <img src="https://e.top4top.io/p_3712m3lf30.jpg" alt="" class="news-side-img">
+        <div class="news-side-body">
+          <div class="news-tag news-urgent" style="font-size:0.65rem; padding:2px 8px;">عاجل</div>
+          <div class="news-side-title">الناقل الرسمي لأخبار كلوفر</div>
+          <div class="news-side-date">📅 01 مارس 2026</div>
+		  <div class="news-side-date">👁 1.9k مشاهدة</div>
+		  <div class="news-side-date">❤ 253</div>
+        </div>
+      </a>
+
+      <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 20px; text-align: center;">
+        <div style="font-size: 2rem; margin-bottom: 10px;">📱</div>
+        <div style="font-size: 0.9rem; color: #7db89a; margin-bottom: 14px;">انضم إلى مجموعة المملكة</div>
+        <a href="https://chat.whatsapp.com/ITNWeFAko971tDxtrpmYRF?mode=hqctcla" target="_blank" class="btn-primary" style="display: inline-block; font-size: 0.85rem; padding: 10px 24px;">انضم الآن</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-logo">Clover</div>
+  <div class="footer-jp">木ノ葉隠れの里</div>
+  <div class="footer-links">
+    <a href="#intro">البداية</a>
+    <a href="#leaders">القادة</a>
+    <a href="#guilds">النقابات</a>
+    <a href="#news">الأخبار</a>
+  </div>
+  <div class="footer-copy">جميع حقوق مملكة كلوفر محفوظة © 2026 | صُنع بـ ☘️</div>
+</footer>
+
+<script>
+// Particles
+const container = document.getElementById('particles');
+for(let i = 0; i < 30; i++) {
+  const p = document.createElement('div');
+  p.className = 'particle';
+  p.style.cssText = `
+    right: ${Math.random() * 100}%;
+    width: ${Math.random() * 4 + 2}px;
+    height: ${Math.random() * 4 + 2}px;
+    animation-duration: ${Math.random() * 15 + 10}s;
+    animation-delay: ${Math.random() * 10}s;
+    opacity: ${Math.random() * 0.5};
+  `;
+  container.appendChild(p);
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
